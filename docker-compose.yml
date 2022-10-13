@@ -9,22 +9,22 @@ services:
     volumes: 
       - 'db:/var/lib/postgresql/data'
     ports: 
-      - 5432:5432
+      - '5432:5432'
   pgadmin: 
     image: dpage/pgadmin4
     environment: 
       PGADMIN_DEFAULT_EMAIL: 'me@booking.ma'
       PGADMIN_DEFAULT_PASSWORD: 'secret'
     ports: 
-      - '8080:80'
+      - '8888:80'
     volumes:
       - 'pgadmin:/var/lib/pgadmin'
   server:
     image: tomcat
     ports:
-      - 80:8080
+      - '80:8080'
     volumes: 
-      - ./build/libs:/usr/local/tomcat/webapps
+      - './build/libs:/usr/local/tomcat/webapps'
 
 volumes: 
   db: 
