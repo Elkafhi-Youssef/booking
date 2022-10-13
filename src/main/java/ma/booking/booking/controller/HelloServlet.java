@@ -1,4 +1,4 @@
-package ma.booking.booking;
+package ma.booking.booking.controller;
 
 import java.io.*;
 
