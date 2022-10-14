@@ -16,8 +16,11 @@ public class ConnectDB {
 
     private ConnectDB(){
         try {
+            System.out.println("connecting to db ....");
+            Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(jbdcURL,username,password);
-        } catch (SQLException e) {
+            System.out.println("successful connection");
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Error in Connection With a database");
             throw new RuntimeException(e);
         }

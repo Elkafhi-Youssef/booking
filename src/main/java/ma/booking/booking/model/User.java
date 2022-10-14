@@ -1,14 +1,21 @@
 package ma.booking.booking.model;
 
+import ma.booking.booking.dao.UserDao;
+
+import java.util.ArrayList;
+
 public class User {
+
     private String fullName;
     private String email;
-    private String password;
+    private int id;
 
-    public User(String fullName, String email, String password){
+    public static ArrayList<User> users;
+    public User(){};
+    public User(String fullName, String email, int id){
         this.fullName = fullName;
         this.email = email;
-        this.password = password;
+        this.id = id;
     }
 
     public String getFullName() {
@@ -27,11 +34,11 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public static User getById(int id) {
+        UserDao userDao = new UserDao();
+        return userDao.getById(id);
     }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public static User getFirst() {
+        return UserDao.getFirst();
     }
 }
