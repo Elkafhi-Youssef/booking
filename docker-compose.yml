@@ -8,6 +8,7 @@ services:
       POSTGRES_DB: 'booking'
     volumes: 
       - 'db:/var/lib/postgresql/data'
+      - './db:/usr/local/src/'
     ports: 
       - '5432:5432'
   pgadmin: 
