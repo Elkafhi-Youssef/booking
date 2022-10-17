@@ -4,17 +4,13 @@ import java.io.*;
 
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import ma.booking.booking.dao.ConnectDB;
-import ma.booking.booking.model.User;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
-public class HelloServlet extends HttpServlet {
+@WebServlet(name = "about", value = "/about")
+public class About extends HttpServlet {
   private String message;
 
   public void init() {
-    System.out.println("init function");
-    ConnectDB.connect();
-    message = User.getFirst().getFullName();
+    message = "about";
   }
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
