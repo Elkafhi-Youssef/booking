@@ -10,9 +10,6 @@ repositories {
     mavenCentral()
 }
 
-ext {
-    junitVersion = '5.8.2'
-}
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
@@ -25,6 +22,6 @@ dependencies {
     compileOnly('jakarta.servlet:jakarta.servlet-api:5.0.0')
 }
 
-test {
-    useJUnitPlatform()
+task migrate(type:Exec) {
+    commandLine('docker', 'exec', 'booking-db-1', 'psql', '-U', 'postgres', '-f', '/usr/local/src/schema.sql', 'booking')
 }
