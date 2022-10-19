@@ -3,27 +3,35 @@ package ma.booking.booking.controller;
 import java.io.*;
 
 import jakarta.servlet.http.*;
-import ma.booking.booking.dao.ConnectDB;
 import ma.booking.booking.model.User;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "loginc", value = "/loginc")
+@WebServlet(name = "login", value = "/login")
 public class Login extends HttpServlet {
-  private ConnectDB con;
 
-  public void init() {
-    con = ConnectDB.connect();
-  }
-
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String email = request.getParameter("email");
-    User user = User.login(email);
-    if (user != null)
-      response.sendRedirect("");
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    HttpSession session = req.getSession();
+    if (session.getAttribute("id") != null)
+      res.sendRedirect("hello-servlet");
     else
-      response.sendRedirect("login");
+      req.getRequestDispatcher("/login.jsp").forward(req, res);
   }
 
-  public void destroy() {
+  @Override
+  public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    User user = User.login(req.getParameter("email"));
+    HttpSession session = req.getSession();
+    if (user != null && user.getPsswd().equals(req.getParameter("psswd"))) {
+      session.setAttribute("id", user.getId());
+      session.setAttribute("name", user.getFullName());
+      session.setAttribute("email", user.getEmail());
+      res.sendRedirect("hello-servlet");
+    } else {
+      req.setAttribute("message", "wrong email or password!");
+      req.getRequestDispatcher("login.jsp").forward(req, res);
+    }
   }
+
 }

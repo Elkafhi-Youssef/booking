@@ -9,8 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UserDao implements Dao<User> {
-  ConnectDB conn = ConnectDB.connect();
-  static Connection con = ConnectDB.con;
+  private static Connection con = ConnectDB.connect().getCon();
 
   @Override
   public User getById(int id) {
@@ -19,26 +18,28 @@ public class UserDao implements Dao<User> {
       preparedStatement.setInt(1, id);
 
       ResultSet rs = preparedStatement.executeQuery();
-      rs.next();
-      return new User(rs.getString("name"), rs.getString("email"), rs.getInt("id"));
+      if (rs.next())
+        return new User(rs.getString("name"), rs.getString("email"), rs.getString("psswd"), rs.getInt("id"));
+      return null;
     } catch (SQLException ex) {
       ex.printStackTrace();
       return null;
     }
-
   }
 
   public static User getFirst() {
     try {
       PreparedStatement preparedStatement = con
-          .prepareStatement("select 'imad' as name, 'imad@email.com' as email, 1 as id");
+          .prepareStatement("select * from users");
       ResultSet rs = preparedStatement.executeQuery();
-      rs.next();
-      return new User(rs.getString("name"), rs.getString("email"), rs.getInt("id"));
+      if (rs.next())
+        return new User(rs.getString("name"), rs.getString("email"), rs.getString("psswd"), rs.getInt("id"));
+      return null;
     } catch (SQLException ex) {
       ex.printStackTrace();
       return null;
     }
+
   }
 
   @Override
@@ -63,19 +64,13 @@ public class UserDao implements Dao<User> {
 
   // login function here
   public static User login(String email) {
-    User user;
     try {
       PreparedStatement preparedStatement = con.prepareStatement("select * from users where email = ? ");
       preparedStatement.setString(1, email);
       ResultSet rs = preparedStatement.executeQuery();
-      if (rs.next()) {
-        System.out.println(
-            "data li jaya mn data base " + rs.getString("name") + " " + rs.getString("email") + " " + rs.getInt("id"));
-        user = new User(rs.getString("name"), rs.getString("email"), rs.getInt("id"));
-        return user;
-      } else {
-        return null;
-      }
+      if (rs.next())
+        return new User(rs.getString("name"), rs.getString("email"), rs.getString("psswd"), rs.getInt("id"));
+      return null;
     } catch (SQLException ex) {
       ex.printStackTrace();
       return null;

@@ -23,9 +23,10 @@ public class User {
   public User() {
   };
 
-  public User(String fullName, String email, int id) {
+  public User(String fullName, String email, String psswd, int id) {
     this.fullName = fullName;
     this.email = email;
+    this.psswd = psswd;
     this.id = id;
   }
 
@@ -61,10 +62,10 @@ public class User {
   @Override
   public String toString() {
     return "User{" +
-            "fullName='" + this.getFullName() + '\'' +
-            ", email='" + this.getEmail() + '\'' +
-            ", id=" + this.getId() +
-            '}';
+        "fullName='" + this.getFullName() + '\'' +
+        ", email='" + this.getEmail() + '\'' +
+        ", id=" + this.getId() +
+        '}';
   }
 
   public static User getFirst() {
