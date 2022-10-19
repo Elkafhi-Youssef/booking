@@ -70,4 +70,8 @@ public class User {
   public static User getFirst() {
     return UserDao.getFirst();
   }
+
+  public static User login(String email) {
+    return UserDao.login(email);
+  }
 }
