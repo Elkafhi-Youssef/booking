@@ -60,4 +60,23 @@ public class UserDao implements Dao<User> {
   public void delete(User users) {
 
   }
+  // login function here
+  public User login(String email){
+  User user;
+    try {
+      PreparedStatement preparedStatement = con.prepareStatement("select * from users where email = ? ");
+      preparedStatement.setString(1,email);
+      ResultSet rs = preparedStatement.executeQuery();
+      if (rs.next()){
+          System.out.println("data li jaya mn data base "+rs.getString("name") +" "+rs.getString("email") +" "+rs.getInt("id"));
+          user = new User(rs.getString("name"), rs.getString("email"), rs.getInt("id"));
+        return user;
+      }else{
+        return null;
+      }
+    } catch (SQLException ex) {
+      ex.printStackTrace();
+      return null;
+    }
+  }
 }
