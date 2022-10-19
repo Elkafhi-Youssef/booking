@@ -8,6 +8,15 @@ public class User {
   private String fullName;
   private String email;
   private int id;
+  private String psswd;
+
+  public String getPsswd() {
+    return psswd;
+  }
+
+  public void setPsswd(String psswd) {
+    this.psswd = psswd;
+  }
 
   public static ArrayList<User> users;
 
@@ -32,6 +41,14 @@ public class User {
     return email;
   }
 
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
   public void setEmail(String email) {
     this.email = email;
   }
@@ -39,6 +56,15 @@ public class User {
   public static User getById(int id) {
     UserDao userDao = new UserDao();
     return userDao.getById(id);
+  }
+
+  @Override
+  public String toString() {
+    return "User{" +
+            "fullName='" + this.getFullName() + '\'' +
+            ", email='" + this.getEmail() + '\'' +
+            ", id=" + this.getId() +
+            '}';
   }
 
   public static User getFirst() {
