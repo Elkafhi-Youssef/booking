@@ -15,6 +15,7 @@ public class Login extends HttpServlet {
     HttpSession session = req.getSession();
     if (session.getAttribute("id") != null)
       res.sendRedirect("hello-servlet");
+//    redirect
     else
       req.getRequestDispatcher("/login.jsp").forward(req, res);
   }
