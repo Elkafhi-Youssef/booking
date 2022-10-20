@@ -29,7 +29,7 @@ task migrate(type:Exec) {
 }
 
 task serve(type:Exec) {
-   commandLine('docker', 'exec', 'booking-server-1','curl', '--user', 'tomcat:secret', 'http://localhost:8080/manager/text/reload?path=/booking-1.0')
+   commandLine('docker', 'exec', 'booking-server-1','curl','--no-progress-meter', '--user', 'tomcat:secret', 'http://localhost:8080/manager/text/reload?path=/booking-1.0')
 }
 
 war.finalizedBy(serve)
