@@ -2,8 +2,4 @@
 <web-app>
   <discription> The booking... but in morocco </discription>
   <display-name> Booking.ma </display-name>
-  <init-param>
-    <param-name>development</param-name>
-    <param-value>true</param-value>
-  </init-param>
 </web-app>
