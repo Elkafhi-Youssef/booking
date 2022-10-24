@@ -14,7 +14,7 @@
 <body>
   <jsp:include page="components/navbar.jsp" />
   <main class="px-6">
-    <div class="h-[290px] w-full bg-primary flex flex-col justify-center px-20 relative">
+    <div class="h-[290px] w-full bg-blue-800 flex flex-col justify-center px-20 relative">
       <p class="text-white font-bold text-4xl">RESERVER VOTRE CHAMBRE</p>
       <p class="text-white font-light">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la
         mise en page avant impression.</p>
@@ -42,7 +42,7 @@
             <input type="number" value="1"
               class="w-1/12 h-full bg-gray-50 text-gray-800 border rounded outline-none transition duration-100 px-3 py-2" />
             <button
-              class="w-2/12 h-full text-white bg-sacendary hover:bg-primary font-medium rounded-lg text-sm px-5 py-2.5 ">Chercher</button>
+              class="w-2/12 h-full text-white  bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 ">Chercher</button>
           </div>
         </form>
       </div>
