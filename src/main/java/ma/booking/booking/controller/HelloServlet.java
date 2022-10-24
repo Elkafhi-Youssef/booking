@@ -9,12 +9,10 @@ import ma.booking.booking.model.User;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
-  private String message;
+
 
   public void init() {
-    System.out.println("init function");
-    ConnectDB.connect();
-    message = User.getFirst().getFullName();
+    ConnectDB conn = ConnectDB.connect();
   }
 
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -23,7 +21,7 @@ public class HelloServlet extends HttpServlet {
     // Hello
     PrintWriter out = response.getWriter();
     out.println("<html><body>");
-    out.println("<h1>" + message + "</h1>");
+
     out.println("</body></html>");
   }
 

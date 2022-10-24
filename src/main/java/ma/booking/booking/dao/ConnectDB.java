@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectDB {
-  private Connection con;
+  public static Connection con;
 
   public Connection getCon() {
     return con;
@@ -24,6 +24,7 @@ public class ConnectDB {
     } catch (SQLException | ClassNotFoundException e) {
       e.printStackTrace();
       closeDb();
+      System.out.println("error in the  connection");
     }
   }
 

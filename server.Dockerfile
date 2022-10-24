@@ -1,7 +1,8 @@
 FROM tomcat
 WORKDIR /usr/local/tomcat/
 RUN curl https://jdbc.postgresql.org/download/postgresql-42.5.0.jar --output ./lib/postgresql-42.5.0.jar 
-
+RUN curl https://repo1.maven.org/maven2/jakarta/servlet/jsp/jstl/jakarta.servlet.jsp.jstl-api/2.0.0/jakarta.servlet.jsp.jstl-api-2.0.0.jar --output lib/jakarta.servlet.jsp.jstl-api-2.0.0.jar
+RUN curl https://repo.maven.apache.org/maven2/org/glassfish/web/jakarta.servlet.jsp.jstl/2.0.0/jakarta.servlet.jsp.jstl-2.0.0.jar --output lib/jakarta.servlet.jsp.jstl-2.0.0.jar
 # manager things
 RUN cp -r webapps.dist/manager webapps/
 RUN echo '\
