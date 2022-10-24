@@ -2,15 +2,23 @@
 <html>
 
 <head>
-  <title>JSP - Hello World</title>
-  <link rel="stylesheet" href="./Style/main.css">
+  <title>Booking.ma</title>
+  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
 </head>
 
 <body>
   <jsp:include page="components/navbar.jsp" />
-  <h1 class="clr">HI</h1>
-  <br />
-  <a href="hello-servlet">Hello Servlet</a>
+  <main class="px-6">
+    <br />
+    <a href="hello-servlet">Hello Servlet</a>
+  </main>
+  <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 </body>
 
 </html>
