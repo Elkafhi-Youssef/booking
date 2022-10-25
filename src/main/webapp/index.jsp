@@ -27,18 +27,16 @@
 
     <%--Start search bar --%>
       <div class="w-[950px] h-[75px] bg-[#FEBB02] p-2 m-auto absolute bottom-[52%] left-[23%]">
-        <form>
+        <form action="reservation" method="post">
           <div class="h-[58px] w-full gap-3 flex items-center overflow-hidden ">
-            <select
+            <select name="hotelName"
               class="h-full w-3/12 bg-withe-50 text-gray-800 border rounded outline-none transition duration-100 px-3 py-2">
               <option hidden>choisiez un hotel..</option>
               <option>Hotel & Spa Riad El WalaaUne nouvelle fenêtre va s'ouvrir</option>
             </select>
-<%--            <input type="date" placeholder="Aujourd'hui"--%>
-<%--              class="w-3/12 h-full bg-gray-50 text-gray-800 border rounded outline-none transition duration-100 px-3 py-2 w-full" />--%>
-            <input type="text" id="fromDate" class="w-3/12 h-full bg-gray-50 text-gray-800 border rounded outline-none transition duration-100 px-3 py-2 w-full">
-            <input type="text" id="toDate" class="w-3/12 h-full bg-gray-50 text-gray-800 border rounded outline-none transition duration-100 px-3 py-2 w-full">
-            <select
+            <input name="from" type="text" id="fromDate" class="w-3/12 h-full bg-gray-50 text-gray-800 border rounded outline-none transition duration-100 px-3 py-2 w-full">
+            <input name="to" type="text" id="toDate" class="w-3/12 h-full bg-gray-50 text-gray-800 border rounded outline-none transition duration-100 px-3 py-2 w-full">
+            <select name="roomType"
               class="h-full w-3/12 bg-withe-50 text-gray-800 border rounded outline-none transition duration-100 px-3 py-2">
               <option hidden>choisiez room type..</option>
               <option>Une chambre double</option>
@@ -46,9 +44,9 @@
               <option>Une chambre individuelle</option>
               <option>Une suite</option>
             </select>
-            <input type="number" value="1"
+            <input type="number" value="1" name="number"
               class="w-1/12 h-full bg-gray-50 text-gray-800 border rounded outline-none transition duration-100 px-3 py-2" />
-            <button
+            <button type="submit"
               class="w-2/12 h-full text-white  bg-[#0071C2] font-medium rounded-lg text-sm px-5 py-2.5">Chercher</button>
           </div>
         </form>
