@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <%--jquery-ui --%>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -30,8 +34,10 @@
               <option hidden>choisiez un hotel..</option>
               <option>Hotel & Spa Riad El WalaaUne nouvelle fenêtre va s'ouvrir</option>
             </select>
-            <input type="date" placeholder="Aujourd'hui"
-              class="w-3/12 h-full bg-gray-50 text-gray-800 border rounded outline-none transition duration-100 px-3 py-2 w-full" />
+<%--            <input type="date" placeholder="Aujourd'hui"--%>
+<%--              class="w-3/12 h-full bg-gray-50 text-gray-800 border rounded outline-none transition duration-100 px-3 py-2 w-full" />--%>
+            <input type="text" id="fromDate" class="w-3/12 h-full bg-gray-50 text-gray-800 border rounded outline-none transition duration-100 px-3 py-2 w-full">
+            <input type="text" id="toDate" class="w-3/12 h-full bg-gray-50 text-gray-800 border rounded outline-none transition duration-100 px-3 py-2 w-full">
             <select
               class="h-full w-3/12 bg-withe-50 text-gray-800 border rounded outline-none transition duration-100 px-3 py-2">
               <option hidden>choisiez room type..</option>
@@ -54,6 +60,41 @@
   </main>
   <jsp:include page="components/Footer.jsp" />
   <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+
+  <%--jquery-ui : datePicker --%>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            var from = $( "#fromDate" )
+                    .datepicker({
+                        dateFormat: "dd-mm-yy",
+                        changeMonth: true
+                    })
+                    .on( "change", function() {
+                        to.datepicker( "option", "minDate", getDate( this ) );
+                    }),
+                to = $( "#toDate" ).datepicker({
+                    dateFormat: "dd-mm-yy",
+                    changeMonth: true
+                })
+                    .on( "change", function() {
+                        from.datepicker( "option", "maxDate", getDate( this ) );
+                    });
+
+            function getDate( element ) {
+                var date;
+                var dateFormat = "dd-mm-yy";
+                try {
+                    date = $.datepicker.parseDate( dateFormat, element.value );
+                } catch( error ) {
+                    date = null;
+                }
+
+                return date;
+            }
+        });
+    </script>
 </body>
 
 </html>
