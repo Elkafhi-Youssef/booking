@@ -1,42 +1,11 @@
 <%@ page import="java.util.ArrayList" %>
 <%--<%@ page import="com.marocair.marocair.model.Flight" %>--%>
 <%@ include file="components/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%--<table class="table-auto mt-6 w-full">--%>
-<%--  <thead>--%>
-<%--  <tr class="bg-gray-200">--%>
-<%--    <th>Id reservation</th>--%>
-<%--    <th>Id Client</th>--%>
-<%--    <th>Name</th>--%>
-<%--    <th>Room Type</th>--%>
-<%--    <th>price</th>--%>
-<%--    <th>Status</th>--%>
-<%--    <th>Action</th>--%>
 
-<%--  </tr>--%>
-<%--  </thead>--%>
-<%--  <tbody>--%>
-<%--&lt;%&ndash;  <c:forEach var="flight" items="${flights}">&ndash;%&gt;--%>
-<%--    <tr class="border border-3 border-blue-6 h-15 odd:bg-blue-100">--%>
-<%--      <td class="p-3">1</td>--%>
-<%--      <td class="p-3">3</td>--%>
-<%--      <td class="p-3">youssef</td>--%>
-<%--      <td class="p-3">simple room</td>--%>
-<%--      <td class="p-3">6746 $</td>--%>
-<%--      <td class="p-3">pending</td>--%>
-<%--&lt;%&ndash;      <td class="p-3">${flight.getNbrOfSeats()}</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;      <td class="p-3">${flight.getAvailableSeats()}</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;      <td class="p-3">${flight.getPrice()}</td>&ndash;%&gt;--%>
-<%--      <td>--%>
-<%--        <form>--%>
-<%--          <input name="flight-id"  hidden>--%>
-<%--          <button>Submit</button>--%>
-<%--        </form>--%>
-<%--      </td>--%>
-<%--    </tr>--%>
-<%--&lt;%&ndash;  </c:forEach>&ndash;%&gt;--%>
-<%--  </tbody>--%>
-<%--</table>--%>
+
+
 <div class="" flex>
 
     <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded border-1 border-black-500 ">
@@ -89,22 +58,31 @@
                 <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                     <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         <c:out value="${listReservation.getId()}"/>
-                        1
+
                     </th>
                     <td class="py-4 px-6">
-                        12/12/2222
+                        <c:out value="${listReservation.getStart_date()}"/>
                     </td>
                     <td class="py-4 px-6">
-                        12/12/2222
+                        <c:out value="${listReservation.getEnd_date()}"/>
                     </td>
                     <td class="py-4 px-6">
-                        jilali 9ador
+                        <c:out value="${listReservation.getName()}"/>
                     </td>
                     <td class="py-4 px-6">
-                        xi room
+                        <c:out value="${listReservation.getRoomType()}"/>
                     </td>
+
                     <td class="py-4 px-6">
-                        pending
+                        <c:choose>
+                            <c:when test="${listReservation.getStatus()=='1'}">
+                                pending
+                            </c:when>
+                            <c:otherwise>
+                                taked
+                                <br />
+                            </c:otherwise>
+                        </c:choose>
                     </td>
                     <td class="py-4 px-6">
                         <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
