@@ -11,15 +11,15 @@ services:
       - './db:/usr/local/src/'
     ports: 
       - '5432:5432'
-  # pgadmin: 
-  #   image: dpage/pgadmin4
-  #   environment: 
-  #     PGADMIN_DEFAULT_EMAIL: 'me@booking.ma'
-  #     PGADMIN_DEFAULT_PASSWORD: 'secret'
-  #   ports: 
-  #     - '8888:80'
-  #   volumes:
-  #     - 'pgadmin:/var/lib/pgadmin'
+  pgadmin:
+     image: dpage/pgadmin4
+     environment:
+       PGADMIN_DEFAULT_EMAIL: 'me@booking.ma'
+       PGADMIN_DEFAULT_PASSWORD: 'secret'
+     ports:
+       - '8888:80'
+     volumes:
+       - 'pgadmin:/var/lib/pgadmin'
   server:
     build:
       dockerfile: ./server.Dockerfile
